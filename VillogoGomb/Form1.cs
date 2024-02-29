@@ -17,7 +17,7 @@ namespace VillogoGomb
             {
                 for (int oszlop = 0; oszlop < 10; oszlop++)
                 {
-                    VillogoGomb b = new VillogoGomb();
+                    Szines b = new Szines();
                     b.Height = Méret;
                     b.Width = Méret;
                     b.Left = oszlop * Méret;
