@@ -10,12 +10,12 @@ namespace VillogoGomb
     {
         public Szines() 
         {
-            MouseClick += Szines_MouseClick; ; 
+            MouseClick += Szines_MouseClick; ;
         }
 
         private void Szines_MouseClick(object? sender, MouseEventArgs e)
         {
-            BackColor = Color.HotPink;
+            BackColor = Color.Fuchsia;
         }
     }
 }
