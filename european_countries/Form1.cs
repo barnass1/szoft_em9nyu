@@ -43,6 +43,7 @@ namespace european_countries
             }
         }
 
+
         private void mentes_Click(object sender, EventArgs e)
         {
             using (var writer = new StreamWriter("european_countries.csv"))
@@ -50,6 +51,8 @@ namespace european_countries
             {
                 csv.WriteRecords(countryList);
             }
+            this.Close();
+
         }
     }
 }
