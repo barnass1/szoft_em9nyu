@@ -41,10 +41,12 @@ namespace studies
 
             if (listBox1.SelectedItem == null) return;
             Instructor selectedInstructor = listBox1.SelectedItem as Instructor;
+            
 
             var employement = from l in context.Instructors
-                          
-                          select new
+                              where l.InstructorSk == selectedInstructor.InstructorSk
+
+                              select new
                           {
                               Munkahely = l.Name,
                               Beosztás = l.StatusFkNavigation.Name

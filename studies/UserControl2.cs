@@ -53,5 +53,30 @@ namespace studies
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+           if(form2.ShowDialog() == DialogResult.OK)
+            {
+                Lesson lesson = new Lesson();
+                lesson.CourseFkNavigation = new Course(); // or get an existing Course object
+                lesson.CourseFkNavigation.Name = form2.textBox1.Text;
+
+
+                context.Lessons.Add(lesson);
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    
+                }
+            }
+
+        }
     }
 }
