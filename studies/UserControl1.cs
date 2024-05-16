@@ -1,9 +1,11 @@
-﻿using studies.Models;
+﻿using CsvHelper;
+using studies.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,6 +60,31 @@ namespace studies
 
         }
 
-       
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    StreamWriter streamWriter = new StreamWriter(saveFileDialog.FileName);
+                    var csvWriter = new CsvWriter(streamWriter, CultureInfo.InvariantCulture);
+                    csvWriter.WriteRecords(context.Lessons);
+
+                    streamWriter.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

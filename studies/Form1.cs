@@ -1,7 +1,13 @@
+using CsvHelper;
+using studies.Models;
+using System.Globalization;
+
+
 namespace studies
 {
     public partial class Form1 : Form
     {
+        StudiesContext context = new StudiesContext();
         public Form1()
         {
             InitializeComponent();
@@ -33,11 +39,13 @@ namespace studies
         {
             panel1.Controls.Clear();
 
-            UserControl3 uc3 = new UserControl3();  
+            UserControl3 uc3 = new UserControl3();
 
             panel1.Controls.Add(uc3);
 
             uc3.Dock = DockStyle.Fill;
         }
+
+        
     }
 }

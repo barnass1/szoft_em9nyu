@@ -37,9 +37,10 @@
             // 
             // button1
             // 
-            button1.Location = new Point(12, 12);
+            button1.Location = new Point(22, 26);
+            button1.Margin = new Padding(6);
             button1.Name = "button1";
-            button1.Size = new Size(89, 81);
+            button1.Size = new Size(165, 173);
             button1.TabIndex = 0;
             button1.Text = "Órák";
             button1.UseVisualStyleBackColor = true;
@@ -47,9 +48,10 @@
             // 
             // button2
             // 
-            button2.Location = new Point(12, 99);
+            button2.Location = new Point(22, 211);
+            button2.Margin = new Padding(6);
             button2.Name = "button2";
-            button2.Size = new Size(89, 81);
+            button2.Size = new Size(165, 173);
             button2.TabIndex = 1;
             button2.Text = "Tárgyak";
             button2.UseVisualStyleBackColor = true;
@@ -58,16 +60,18 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.Location = new Point(107, 12);
+            panel1.Location = new Point(199, 26);
+            panel1.Margin = new Padding(6);
             panel1.Name = "panel1";
-            panel1.Size = new Size(681, 426);
+            panel1.Size = new Size(1265, 909);
             panel1.TabIndex = 2;
             // 
             // button3
             // 
-            button3.Location = new Point(12, 186);
+            button3.Location = new Point(22, 397);
+            button3.Margin = new Padding(6);
             button3.Name = "button3";
-            button3.Size = new Size(89, 81);
+            button3.Size = new Size(165, 173);
             button3.TabIndex = 3;
             button3.Text = "Oktatók";
             button3.UseVisualStyleBackColor = true;
@@ -75,13 +79,14 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1486, 960);
             Controls.Add(button3);
             Controls.Add(panel1);
             Controls.Add(button2);
             Controls.Add(button1);
+            Margin = new Padding(6);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);

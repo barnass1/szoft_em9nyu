@@ -75,6 +75,8 @@ namespace studies
                     MessageBox.Show(ex.Message);
                     
                 }
+
+
             }
 
         }

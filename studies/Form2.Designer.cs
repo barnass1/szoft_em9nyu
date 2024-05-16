@@ -37,9 +37,10 @@
             // button1
             // 
             button1.DialogResult = DialogResult.OK;
-            button1.Location = new Point(210, 127);
+            button1.Location = new Point(398, 541);
+            button1.Margin = new Padding(6);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(139, 49);
             button1.TabIndex = 0;
             button1.Text = "Ok";
             button1.UseVisualStyleBackColor = true;
@@ -47,39 +48,43 @@
             // button2
             // 
             button2.DialogResult = DialogResult.Cancel;
-            button2.Location = new Point(129, 127);
+            button2.Location = new Point(247, 541);
+            button2.Margin = new Padding(6);
             button2.Name = "button2";
-            button2.Size = new Size(75, 23);
+            button2.Size = new Size(139, 49);
             button2.TabIndex = 1;
             button2.Text = "Mégse";
             button2.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(12, 60);
+            textBox1.Location = new Point(22, 128);
+            textBox1.Margin = new Padding(6);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(273, 23);
+            textBox1.Size = new Size(504, 39);
             textBox1.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 42);
+            label1.Location = new Point(22, 90);
+            label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(31, 15);
+            label1.Size = new Size(62, 32);
             label1.TabIndex = 3;
             label1.Text = "Név:";
             // 
             // Form2
             // 
             AccessibleRole = AccessibleRole.MenuPopup;
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(297, 162);
+            ClientSize = new Size(552, 605);
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(button2);
             Controls.Add(button1);
+            Margin = new Padding(6);
             Name = "Form2";
             ShowInTaskbar = false;
             Text = "Form2";
