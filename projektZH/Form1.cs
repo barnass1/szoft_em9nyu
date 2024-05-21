@@ -24,15 +24,44 @@ namespace projektZH
                 MessageBox.Show("Nem sikerült betölteni a szavakat a fájlból!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
-            
+
             KeyPress += Form1_KeyPress;
         }
 
         private int wrongGuessCount = 0;
 
+        private async void UpdateWordMaskButtons(string wordMask)
+        {
+            panel1.Controls.Clear();
+
+            int buttonWidth = 40;
+            int buttonHeight = 40;
+            int panelWidth = panel1.Width;
+            int totalButtonWidth = wordMask.Length * buttonWidth;
+            int leftMargin = (panelWidth - totalButtonWidth) / 2;
+
+            for (int i = 0; i < wordMask.Length; i++)
+            {
+                Button btn = new Button();
+                btn.Text = wordMask[i].ToString();
+                btn.Width = buttonWidth;
+                btn.Height = buttonHeight;
+                btn.Left = leftMargin + i * buttonWidth;
+                panel1.Controls.Add(btn);
+            }
+
+            if (string.Join("", panel1.Controls.OfType<Button>().Select(btn => btn.Text)) == selectedWord)
+            {
+                label1.Text = "Nyertél!";
+                label2.Text = "A játék hamarosan újraindul";
+                await Task.Delay(7000);
+                RestartGame();
+            }
+        }
+
         private async void Form1_KeyPress(object? sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)27) // Check if escape key is pressed
+            if (e.KeyChar == (char)27)
             {
                 DialogResult result = MessageBox.Show("Szeretnél új játékot indítani?", "Új játék", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
@@ -49,7 +78,7 @@ namespace projektZH
 
             if (word.Guess(e.KeyChar))
             {
-                label1.Text = word.WordMask;
+                UpdateWordMaskButtons(word.WordMask);
 
             }
             else
@@ -70,13 +99,7 @@ namespace projektZH
                     label2.Text = "";
                 }
             }
-            if (label1.Text == selectedWord)
-            {
-                label1.Text = "Nyertél!";
-                label2.Text = "A játék hamarosan újraindul";
-                await Task.Delay(7000);
-                RestartGame();
-            }
+
         }
 
         private void RestartGame()
@@ -101,7 +124,7 @@ namespace projektZH
                 Close();
             }
 
-            
+
         }
 
         private void DrawHangman(int wrongGuessCount)
@@ -184,5 +207,9 @@ namespace projektZH
 
             return words;
         }
+
+
+
+
     }
 }
