@@ -7,9 +7,8 @@ namespace projektZH
         {
             InitializeComponent();
         }
-
         Word word;
-        public async void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
             List<string> words = LoadWordsFromFile();
             if (words.Count > 0)
@@ -24,22 +23,37 @@ namespace projektZH
                 MessageBox.Show("Nem sikerült betölteni a szavakat a fájlból!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
-
             KeyPress += Form1_KeyPress;
         }
-
+        private List<string> LoadWordsFromFile()
+        {
+            List<string> words = new List<string>();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text Files (*.txt)|*.txt";
+            openFileDialog.Title = "Válassz fájlt a kezdéshez!";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    words = File.ReadAllLines(openFileDialog.FileName).ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            return words;
+        }
         private int wrongGuessCount = 0;
-
         private async void UpdateWordMaskButtons(string wordMask)
         {
+            
             panel1.Controls.Clear();
-
             int buttonWidth = 40;
             int buttonHeight = 40;
             int panelWidth = panel1.Width;
             int totalButtonWidth = wordMask.Length * buttonWidth;
             int leftMargin = (panelWidth - totalButtonWidth) / 2;
-
             for (int i = 0; i < wordMask.Length; i++)
             {
                 Button btn = new Button();
@@ -48,17 +62,16 @@ namespace projektZH
                 btn.Height = buttonHeight;
                 btn.Left = leftMargin + i * buttonWidth;
                 panel1.Controls.Add(btn);
+                
             }
-
             if (string.Join("", panel1.Controls.OfType<Button>().Select(btn => btn.Text)) == selectedWord)
             {
                 label1.Text = "Nyertél!";
                 label2.Text = "A játék hamarosan újraindul";
-                await Task.Delay(7000);
-                RestartGame();
+                await Task.Delay(5000);
+                Application.Restart();
             }
         }
-
         private async void Form1_KeyPress(object? sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)27)
@@ -66,20 +79,14 @@ namespace projektZH
                 DialogResult result = MessageBox.Show("Szeretnél új játékot indítani?", "Új játék", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    RestartGame();
+                    Application.Restart();
                     return;
                 }
             }
-
-            if (wrongGuessCount == 7)
-            {
-                return;
-            }
-
             if (word.Guess(e.KeyChar))
             {
                 UpdateWordMaskButtons(word.WordMask);
-
+                
             }
             else
             {
@@ -90,8 +97,8 @@ namespace projektZH
                 {
                     label1.Text = "Vesztettél!";
                     label2.Text = "A játék hamarosan újraindul";
-                    await Task.Delay(7000);
-                    RestartGame();
+                    await Task.Delay(5000);
+                    Application.Restart();
                 }
                 else
                 {
@@ -99,20 +106,10 @@ namespace projektZH
                     label2.Text = "";
                 }
             }
-
         }
-
-        private void RestartGame()
-        {
-           Application.Restart();
-
-
-        }
-
         private void DrawHangman(int wrongGuessCount)
         {
             Graphics g = this.CreateGraphics();
-            g.Clear(this.BackColor);
 
             switch (wrongGuessCount)
             {
@@ -166,32 +163,5 @@ namespace projektZH
                     break;
             }
         }
-
-        private List<string> LoadWordsFromFile()
-        {
-            List<string> words = new List<string>();
-
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt";
-            openFileDialog.Title = "Select a Word List File";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    words = File.ReadAllLines(openFileDialog.FileName).ToList();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error reading word list file: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-            return words;
-        }
-
-
-
-
     }
 }

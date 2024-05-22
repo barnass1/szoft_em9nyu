@@ -41,7 +41,7 @@
             label1.Location = new Point(22, 297);
             label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(722, 53);
+            label1.Size = new Size(742, 53);
             label1.TabIndex = 0;
             label1.Text = "Nyomj egy betűt!";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -54,7 +54,7 @@
             label2.Location = new Point(22, 254);
             label2.Margin = new Padding(6, 0, 6, 0);
             label2.Name = "label2";
-            label2.Size = new Size(722, 43);
+            label2.Size = new Size(742, 43);
             label2.TabIndex = 1;
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -72,14 +72,14 @@
             // 
             panel1.Location = new Point(22, 353);
             panel1.Name = "panel1";
-            panel1.Size = new Size(722, 64);
+            panel1.Size = new Size(742, 64);
             panel1.TabIndex = 3;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(774, 429);
+            ClientSize = new Size(794, 429);
             Controls.Add(panel1);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -89,7 +89,8 @@
             MaximizeBox = false;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Akasztófa";
+            TopMost = true;
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
