@@ -71,7 +71,7 @@ namespace projektZH
                 }
             }
 
-            if (wrongGuessCount == 8)
+            if (wrongGuessCount == 7)
             {
                 return;
             }
@@ -86,7 +86,7 @@ namespace projektZH
                 label2.Text = "Nem talált!";
                 wrongGuessCount++;
                 DrawHangman(wrongGuessCount);
-                if (wrongGuessCount == 8)
+                if (wrongGuessCount == 7)
                 {
                     label1.Text = "Vesztettél!";
                     label2.Text = "A játék hamarosan újraindul";
@@ -104,25 +104,7 @@ namespace projektZH
 
         private void RestartGame()
         {
-            wrongGuessCount = 0;
-            label1.Text = "Nyomj egy betűt!";
-            label2.Text = "";
-
-            Graphics g = this.CreateGraphics();
-            g.Clear(this.BackColor);
-            List<string> words = LoadWordsFromFile();
-            if (words.Count > 0)
-            {
-                Random random = new Random();
-                int index = random.Next(0, words.Count);
-                string selectedWord = words[index];
-                word = new Word(selectedWord);
-            }
-            else
-            {
-                MessageBox.Show("Nem sikerült betölteni a szavakat a fájlból!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
-            }
+           Application.Restart();
 
 
         }
